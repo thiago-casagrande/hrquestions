@@ -1,0 +1,26 @@
+﻿<!-- TODO: make it a reusable directive (don't worry about style) -->
+<div class="pagination">
+    <div>
+        Items per page
+        <select ng-model="pagination.itensPorPagina">
+            <!-- select how many items should be displayed per page -->
+            <option value="10">10</option>
+            <option value="20" selected="selected">20</option> <!-- default option on first load should be 20 -->
+            <option value="30">30</option>
+            <option value="all">all</option> <!-- disregard pagination: show all the items -->
+        </select>
+    </div>
+    <div>
+        <button ng-click="pagination.pagina = 1">&lt;&lt;</button> <!-- 'go to first page' button -->
+        <button ng-click="pagination.pagina > 1 && (pagination.pagina = pagination.pagina - 1)">&lt;</button> <!-- pagina anterior -->
+        
+        Page <input type="number" ng-model="pagination.pagina" ng-change="validarPagina()" min="1" max="{{pagination.totalPaginas}}"/>
+
+        <button ng-click="pagination.pagina < pagination.totalPaginas && (pagination.pagina = pagination.pagina + 1)">&gt;</button> <!-- proxima pagina-->
+        <button ng-click="pagination.pagina = pagination.totalPaginas">&gt;&gt;</button> <!-- 'go to last page' button -->
+    </div>
+    <div>
+        <span>{{pagination.totalItens}} items</span> <!-- total number of items -->
+    </div>
+
+</div>
